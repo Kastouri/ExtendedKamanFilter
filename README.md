@@ -24,19 +24,20 @@ The achived rmse for dataset 1 was :
 * rmse_vy = 0.4613
 
 
-Dataset 1 | Dataset 2
-- | - 
-![alt](Docs/demo.png) | ![alt](Docs/demo2.png)
+## Dataset 1 
+![alt](Docs/demo.png)  
+## Dataset 2
+![alt](Docs/demo2.png)
 
 The following animation shows that the filter successfully estimates the cars position even when turning.
 ![alt](Docs/EKF_demo.gif)
 
 Using one of the 2 sensors, the following **rmse** was achieved for Dataset 1.
 
-Radar only | Lidar only
-- | - 
-![alt](Docs/radar.png) | ![alt](Docs/lidar.png)
-
+## Radar only  
+![alt](Docs/radar.png) 
+## Lidar only
+![alt](Docs/lidar.png)
 
 **INPUT**: values provided by the simulator to the c++ program
 
