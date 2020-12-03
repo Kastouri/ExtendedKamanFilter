@@ -28,8 +28,15 @@ Dataset 1 | Dataset 2
 - | - 
 ![alt](Docs/demo.png) | ![alt](Docs/demo2.png)
 
-The folowing animation shows that the filter successfully estimates the cars position even when turning.
+The following animation shows that the filter successfully estimates the cars position even when turning.
 ![alt](Docs/EKF_demo.gif)
+
+Using one of the 2 sensors, the following **rmse** was achieved for Dataset 1.
+Radar only | Lidar only
+- | - 
+![alt](Docs/radar.png) | ![alt](Docs/lidar.png)
+
+
 **INPUT**: values provided by the simulator to the c++ program
 
 ["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)

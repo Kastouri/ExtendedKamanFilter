@@ -57,11 +57,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    * Initialization
    */
   if (!is_initialized_) {
-    /**
-     * TODO: Initialize the state ekf_.x_ with the first measurement.
-     * TODO: Create the covariance matrix.
-     * You'll need to convert radar from polar to cartesian coordinates.
-     */
 
     // first measurement
     cout << "EKF: " << endl;
@@ -80,7 +75,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     // initialize the process noise convariance matrix
     ekf_.Q_ = MatrixXd(4,4);
     if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
-      // TODO: Convert radar from polar to cartesian coordinates 
+      // Convert radar from polar to cartesian coordinates 
       //         and initialize state.
       double rho = measurement_pack.raw_measurements_[0];
       double phi = measurement_pack.raw_measurements_[1];
@@ -109,11 +104,23 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   /**
    * Prediction
    */
-
+  /** Analysing Effect of using just the LIDAR sensor
+   **/
+  // skip step if measurement comes from RADAR
+  /*if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
+    return;
+  }*/
+  /** Analysing Effect of using just the RADAR sensor
+   **/
+  // skip step if measurement comes from RADAR
+  /*if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
+    return;
+  }*/
+  
   /**
-   * TODO: Update the state transition matrix F according to the new elapsed time.
+   * Update the state transition matrix F according to the new elapsed time.
    * Time is measured in seconds.
-   * TODO: Update the process noise covariance matrix.
+   *  Update the process noise covariance matrix.
    * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
   
@@ -155,14 +162,13 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    */
 
   /**
-   * TODO:
    * - Use the sensor type to perform the update step.
    * - Update the state and covariance matrices.
    */
 
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
-    // TODO: Radar updates
-    // TODO: don't calculate jacobian if division by zero will happen, don't update
+    //  Radar updates
+    //  don't calculate jacobian if division by zero will happen, don't update
     double px = measurement_pack.raw_measurements_[0];
     double py =  measurement_pack.raw_measurements_[1];
     double c1 = px*px+py*py;
