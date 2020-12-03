@@ -66,9 +66,9 @@ void KalmanFilter::Update(const VectorXd &z) {
   //cout << "P_ = " << P_ << endl;
   //cout << "DEBUGGING kalman_filter.cpp LINE 61: X updated successfully!" << endl;
   P_ = (I - K * H_) * P_;
-  cout << "updated using LIDAR" << endl;
-  cout << "x_ = " << x_ << endl;
-  cout << "P_ = " << P_ << endl;
+  //cout << "updated using LIDAR" << endl;
+  //cout << "x_ = " << x_ << endl;
+  //cout << "P_ = " << P_ << endl;
 }
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
@@ -79,10 +79,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   double py= x_(1);
   double vx= x_(2);
   double vy= x_(3);
-  cout << "px="<< px << endl;
-  cout << "py="<< py << endl;
-  cout << "vx="<< vx << endl;
-  cout << "vy="<< vy << endl;
+  //cout << "px="<< px << endl;
+  //cout << "py="<< py << endl;
+  //cout << "vx="<< vx << endl;
+  //cout << "vy="<< vy << endl;
 
   double px_2 = px* px;
   double py_2 = py* py;
@@ -90,17 +90,17 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   if (rho_pred < 0.0000001){
     rho_pred = 0.0000001;
   }
-  cout << "angle rate predicted to be rho="<< rho_pred << endl;
+  //cout << "angle rate predicted to be rho="<< rho_pred << endl;
   
   double phi_pred = atan2(py, px);
-  cout << "angle predicted to be phi="<< phi_pred * 180 / 3.14 << endl;
+  //cout << "angle predicted to be phi="<< phi_pred * 180 / 3.14 << endl;
   double rho_dot_pred = (px*vx + py*vy)/(sqrt(px_2 + py_2)); 
-  cout << "angle rate predicted to be rho_dot="<< rho_dot_pred << endl;
+  //cout << "angle rate predicted to be rho_dot="<< rho_dot_pred << endl;
   
   VectorXd z_pred(3);
   z_pred << rho_pred, phi_pred, rho_dot_pred;
   VectorXd y = z - z_pred;
-   cout << "Error Vector y= "<< y <<" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<< endl;
+  //cout << "Error Vector y= "<< y <<" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<< endl;
   while ((y(1) > M_PI) ||  (y(1) < -M_PI)){
     if (y(1) >= M_PI){
       y(1) -= 2 * M_PI;
@@ -123,7 +123,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
   P_ = (I - K * H_) * P_;
   
-  cout << "updated using RADAR" << endl;
-  cout << "x_ = " << x_ << endl;
-  cout << "P_ = " << P_ << endl; 
+  //cout << "updated using RADAR" << endl;
+  //cout << "x_ = " << x_ << endl;
+  //cout << "P_ = " << P_ << endl; 
 }

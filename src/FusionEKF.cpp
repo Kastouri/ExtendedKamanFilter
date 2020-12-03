@@ -88,7 +88,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
                  rho * sin(phi), // initialize py with rho * sin phi
                  0.0, // initialize vx with 0
                   0.0; // initialize vy with 0
-      cout << "first measurement was a RADAR measurement !!!!!!!!!!!!!!!!!" << endl;
+      //cout << "first measurement was a RADAR measurement !!!!!!!!!!!!!!!!!" << endl;
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // TODO: Initialize state.
@@ -97,12 +97,12 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
                 0.0,
                 0.0;
 
-      cout << "first measurement was a LASER measurement !!!!!!!!!!!!!!!!!" << endl;
+      //cout << "first measurement was a LASER measurement !!!!!!!!!!!!!!!!!" << endl;
     }
     previous_timestamp_ = measurement_pack.timestamp_ ;
     // done initializing, no need to predict or update
     is_initialized_ = true;
-    cout << "DEBUGGING fusionEKF.cpp LINE 100: Initialization DONE!" << endl;
+    //cout << "DEBUGGING fusionEKF.cpp LINE 100: Initialization DONE!" << endl;
     return;
   }
 
@@ -171,8 +171,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       return;
     }
     Hj_ = tools.CalculateJacobian(ekf_.x_);
-    cout << "Jacobian Calculated: " << endl;
-    cout << Hj_ << endl;
+    //cout << "Jacobian Calculated: " << endl;
+    //cout << Hj_ << endl;
     ekf_.H_ = MatrixXd(3,4);
     ekf_.H_ = Hj_;
     ekf_.R_  = MatrixXd(3, 3);
