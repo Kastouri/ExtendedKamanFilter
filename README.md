@@ -50,6 +50,3 @@ The folowing animation shows that the filter successfully estimates the cars pos
 ["rmse_vy"]
 
 ---
-
-
-## Project Instructions and Rubric
