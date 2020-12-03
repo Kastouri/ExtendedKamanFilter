@@ -32,6 +32,7 @@ The following animation shows that the filter successfully estimates the cars po
 ![alt](Docs/EKF_demo.gif)
 
 Using one of the 2 sensors, the following **rmse** was achieved for Dataset 1.
+
 Radar only | Lidar only
 - | - 
 ![alt](Docs/radar.png) | ![alt](Docs/lidar.png)
